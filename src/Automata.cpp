@@ -1,3 +1,4 @@
+// Copyright 2022 UNN-IASR
 #include "Automata.h"
 #include <vector>
 #include <string>
@@ -6,7 +7,6 @@
 Automata::Automata(std::vector<std::string> menu, std::vector<int> prices) {
 	if (menu.size() != prices.size())
 		throw std::invalid_argument("Menu and prices sizes must be equal");
-
 	_cash = 0;
 	_menu = menu;
 	_prices = prices;
@@ -70,10 +70,9 @@ void Automata::choice(int drinkIndex) {
 void Automata::check(int drinkIndex) {
 	if (drinkIndex < 1 || drinkIndex > _menu.size())
 		throw std::invalid_argument("Incorrect drinkIndex");
-
 	if (_prices[drinkIndex] > _cash) {
 		cancel();
-    }else {
+    } else {
 		_cash -= _prices[drinkIndex];
 		cook(drinkIndex);
 	}
