@@ -13,10 +13,12 @@ public:
     std::string getState();
     void choice(int drinkIndex);
     void cancel();
+    
 private:
     void check(int drinkIndex);
     void cook(int drinkIndex);
     void finish();
+    
 private:
     enum STATES { OFF, WAIT, ACCEPT, CHECK, COOK };
     int _cash;
