@@ -4,7 +4,7 @@
 #include <string>
 
 class Automata {
-public:
+ public:
     Automata(std::vector<std::string> menu, std::vector<int> prices);
     void on();
     void off();
@@ -14,12 +14,12 @@ public:
     void choice(int drinkIndex);
     void cancel();
     
-private:
+ private:
     void check(int drinkIndex);
     void cook(int drinkIndex);
     void finish();
     
-private:
+ private:
     enum STATES { OFF, WAIT, ACCEPT, CHECK, COOK };
     int _cash;
     std::vector<std::string> _menu;
