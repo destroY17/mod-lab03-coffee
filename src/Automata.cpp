@@ -28,19 +28,16 @@ void Automata::off() {
 void Automata::coin(int sum) {
 	if (sum < 0)
 		throw std::invalid_argument("Sum must be > 0");
-
 	if (_state != WAIT && _state != ACCEPT)
 		throw std::logic_error("Automata is " + getState());
-
 	_state = ACCEPT;
 	_cash += sum;
 }
 
 std::string Automata::getMenu() {
 	std::string result = "";
-
 	for (int i = 0; i < _menu.size(); i++) {
-		result += (i + 1) + "." + _menu[i] + " - " + std::to_string(_prices[i]) + "\n";
+		result += _menu[i] + " - " + std::to_string(_prices[i]) + "\n";
 	}
 	return result;
 }
@@ -64,10 +61,8 @@ std::string Automata::getState() {
 void Automata::choice(int drinkIndex) {
 	if (drinkIndex < 1 || drinkIndex > _menu.size())
 		throw std::invalid_argument("Incorrect drinkIndex");
-
 	if (_state != ACCEPT && _state != WAIT)
 		throw std::logic_error("Automata is " + getState());
-	
 	_state = CHECK;
 	check(drinkIndex);
 }
@@ -76,9 +71,9 @@ void Automata::check(int drinkIndex) {
 	if (drinkIndex < 1 || drinkIndex > _menu.size())
 		throw std::invalid_argument("Incorrect drinkIndex");
 
-	if (_prices[drinkIndex] > _cash)
+	if (_prices[drinkIndex] > _cash) {
 		cancel();
-	else {
+    }else {
 		_cash -= _prices[drinkIndex];
 		cook(drinkIndex);
 	}
